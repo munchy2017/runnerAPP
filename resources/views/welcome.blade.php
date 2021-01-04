@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>Runners| App </title>
+	<title>Runners | App </title>
 
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="assets/img/favicon.png">
@@ -45,6 +45,11 @@
 							</div>
 							<div class="text-center">
 								<button class="btn btn-primary btn-block account-btn" type="submit">Login</button>
+                            </div>
+
+                            <div class="text-center">
+                                <p class="text-center mt-4">Go to Dashboard? <a  href= '{!!url("/dashboard")!!}'>Dashboard</a></p>
+
                             </div>
                             
 						</form>

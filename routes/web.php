@@ -24,3 +24,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Route::get('dashboard', 'DashboardController@get');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'get'])->name('dashboard');
+Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'Categories'])->name('categories');
+Route::post('/create_category', [App\Http\Controllers\CategoriesController::class, 'create_category'])->name('create_category');
+
+Route::get('/runners', [App\Http\Controllers\RunnersController::class, 'getRunners'])->name('runners');
+
+
