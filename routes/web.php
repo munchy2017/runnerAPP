@@ -31,5 +31,5 @@ Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'Ca
 Route::post('/create_category', [App\Http\Controllers\CategoriesController::class, 'create_category'])->name('create_category');
 
 Route::get('/runners', [App\Http\Controllers\RunnersController::class, 'getRunners'])->name('runners');
-
+Route::post('/create_runner', [App\Http\Controllers\RunnersController::class, 'create_runner'])->name('create_runner');
 

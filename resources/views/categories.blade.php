@@ -95,90 +95,10 @@
 										</div>
 									</a>
 								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="" src="assets/img/provider/provider-03.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Yolanda Potter have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">12 Sep 2020 09:25 PM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/provider/provider-04.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Ricardo Flemings have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">11 Sep 2020 06:36 PM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/provider/provider-05.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Maritza Wasson have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">10 Sep 2020 08:42 AM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/provider/provider-06.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Marya Ruiz have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">9 Sep 2020 11:01 AM</span>
-												</p>
-											</div>
-										</div>
-									</a>
-								</li>
-								<li class="notification-message">
-									<a href="admin-notification.html">
-										<div class="media">
-											<span class="avatar avatar-sm">
-												<img class="avatar-img rounded-circle" alt="User Image" src="assets/img/provider/provider-07.jpg">
-											</span>
-											<div class="media-body">
-												<p class="noti-details">
-													<span class="noti-title">Richard Hughes have been subscribed</span>
-												</p>
-												<p class="noti-time">
-													<span class="notification-time">8 Sep 2020 06:23 AM</span>
-												</p>
-											</div>
-										</div>
-									</a>
+								
+							
+							
+								
 								</li>
 							</ul>
 						</div>
@@ -193,12 +113,12 @@
 				<li class="nav-item dropdown">
 					<a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-toggle="dropdown">
 						<span class="user-img">
-							<img class="rounded-circle" src="assets/img/user.jpg" width="40" alt="Admin">
+							<img class="rounded-circle" src="assets/img/logo-icon.png" width="40" alt="Admin">
 						</span>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a class="dropdown-item" href="admin-profile.html">Profile</a>
-						<a class="dropdown-item" href="login.html">Logout</a>
+						<a class="dropdown-item" href="#">Profile</a>
+						<a class="dropdown-item" href="#">Logout</a>
 					</div>
 				</li>
 				<!-- /User Menu -->
@@ -247,9 +167,9 @@
                                     <p>{{ \Session::get('success') }}</p>
                                 </div><br />
                             @endif
-							<a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
+							{{-- <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
 								<i class="fas fa-filter"></i>
-							</a>
+							</a> --}}
                             <a href="#addCategoryModal"  data-toggle="modal" data-toggle="tooltip" title="Add Category" class="btn btn-primary add-button ml-3">
                                 <i class="fas fa-plus"></i>
                             </a>
@@ -259,7 +179,7 @@
 				<!-- /Page Header -->
 
 				<!-- Search Filter -->
-				<div class="card filter-card" id="filter_inputs">
+				<!--<div class="card filter-card" id="filter_inputs">
 					<div class="card-body pb-0">
 						<form action="#" method="post">
 							<div class="row filter-row">
@@ -302,7 +222,7 @@
 							</div>
 						</form>
 					</div>
-				</div>
+				</div>-->
 				<!-- /Search Filter -->
 
 				<div class="row">
@@ -313,36 +233,27 @@
 									<table class="table table-hover table-center mb-0 datatable">
 										<thead>
 											<tr>
-												<th>#</th>
-                                                
+												<th>Category Id</th>
                                                 <th>Category Name </th>
-												<th>Date Created</th>
+												
 												<th class="text-right">Action</th>
 											</tr>
 										</thead>
 										<tbody>
 
-
-
-
-
-
-
-                                            @foreach($categories as $cats)
+											@foreach($categories as $cats)
 											<tr>
+												
                                             <td>{{$cats->categoryId}}</td>
-												<td>
-
-
-
-													{{-- <img class="rounded service-img mr-1"  src="{{url('$cats->category_image')}}"alt="Category Image"></td> --}}
-                                                <td>{{$cats->categoryName}}</td>
-                                                <td>{{$cats->categoryName}}</td>
-                                                @endforeach
+												<td>{{$cats->categoryName}}</td>
+                                                
+                                               
 												<td class="text-right">
 													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
 												</td>
+												
 											</tr>
+											@endforeach
 										</tbody>
 									</table>
 								</div>

@@ -242,22 +242,29 @@
 				<div class="page-header">
 					<div class="row">
 						<div class="col">
-							<h3 class="page-title">Categories</h3>
+							<h3 class="page-title">Runners</h3>
 						</div>
 						<div class="col-auto text-right">
-							<a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
+                            @if (\Session::has('success'))
+                                <div class="alert alert-success">
+                                    <p>{{ \Session::get('success') }}</p>
+                                </div><br />
+							@endif
+						</div>
+						<div class="col-auto text-right">
+							{{-- <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
 								<i class="fas fa-filter"></i>
-							</a>
-							<a href="add-category.html" class="btn btn-primary add-button ml-3">
-								<i class="fas fa-plus"></i>
-							</a>
+							</a> --}}
+							<a href="#addRunnerModal"  data-toggle="modal" data-toggle="tooltip" title="Add Runner" class="btn btn-primary add-button ml-3">
+                                <i class="fas fa-plus"></i>
+                            </a>
 						</div>
 					</div>
 				</div>
 				<!-- /Page Header -->
 				
 				<!-- Search Filter -->
-				<div class="card filter-card" id="filter_inputs">
+				<!--<div class="card filter-card" id="filter_inputs">
 					<div class="card-body pb-0">
 						<form action="#" method="post">
 							<div class="row filter-row">
@@ -300,7 +307,7 @@
 							</div>
 						</form>
 					</div>
-				</div>
+				</div>-->
 				<!-- /Search Filter -->
 				
 				<div class="row">
@@ -311,94 +318,45 @@
 									<table class="table table-hover table-center mb-0 datatable">
 										<thead>
 											<tr>
-												<th>#</th>
-												<th>Category</th>
-												<th>Date</th>
+												{{-- <th>Runner Id</th> --}}
+												<th>Fullname</th>
+												<th>Phone</th>
+												<th>Email</th>
+												{{-- <th>Address</th> --}}
+												<th>Business Name</th>
+												{{-- <th>Business Email</th>
+												<th>Business Phone</th>
+												<th>Business Address</th> --}}
+												<th>Business Category</th>
 												<th class="text-right">Action</th>
 											</tr>
+
+										
 										</thead>
 										<tbody>
+											@foreach($runner as $run)
 											<tr>
-												<td>1</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-01.jpg" alt="Category Image">Computer</td>
-												<td>11 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
+												
+												
+													<td class="hidden">{{$run->runnerId}}</td>
+													<td>{{$run->runnerName}}</td>
+													<td>{{$run->runnerEmail}}</td>
+													<td>{{$run->runnerPhone}}</td>
+													{{-- <td>{{$run->runnerAddress}}</td> --}}
+													<td>{{$run->runnerBusinessName}}</td>
+													{{-- <td>{{$run->runnerBusinessEmail}}</td>
+													<td>{{$run->runnerBusinessContact}}</td>
+													<td>{{$run->runnerBusinessAddress}}</td> --}}
+													<td>{{$run->runnerBusinessCategory}}</td>
+													<td class="text-right">
+														<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
+													</td>
+												
 											</tr>
-											<tr>
-												<td>2</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-02.jpg" alt="Category Image">Interior</td>
-												<td>10 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-03.jpg" alt="Category Image">Car Wash</td>
-												<td>9 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
-											</tr>
-											<tr>
-												<td>4</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-04.jpg" alt="Category Image">Cleaning</td>
-												<td>8 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
-											</tr>
-											<tr>
-												<td>5</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-05.jpg" alt="Category Image">Electrical</td>
-												<td>7 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
-											</tr>
-											<tr>
-												<td>6</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-06.jpg" alt="Category Image">Construction</td>
-												<td>6 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
-											</tr>
-											<tr>
-												<td>7</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-07.jpg" alt="Category Image">Plumbing</td>
-												<td>5 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
-											</tr>
-											<tr>
-												<td>8</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-08.jpg" alt="Category Image">Carpentry</td>
-												<td>4 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
-											</tr>
-											<tr>
-												<td>9</td>
-												<td>
-													<img class="rounded service-img mr-1" src="assets/img/category/category-09.jpg" alt="Category Image">Appliance</td>
-												<td>3 Sep 2020</td>
-												<td class="text-right">
-													<a href="edit-category.html" class="btn btn-sm bg-success-light mr-2">	<i class="far fa-edit mr-1"></i> Edit</a>
-												</td>
-											</tr>
+											@endforeach
+											
+										
+											
 										</tbody>
 									</table>
 								</div>
@@ -408,7 +366,114 @@
 				</div>
 			</div>
 		</div>
+
+		  <!-- Edit Modal HTML -->
+		  <div id="addRunnerModal" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<form method="post" action="{{url('create_runner')}}" enctype="multipart/form-data">
+						{{csrf_field()}}
+						<div class="modal-header">
+							<h4 class="modal-title">Add Runners</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</div>
+						<div class="modal-body">
+
+							<div><h4>Personal Information :</h4></div>
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label>Fullname</label>
+										<input class="form-control" id="runnerName" name="runnerName" type="text">
+									</div>
+
+									<div class="form-group col-sm-4">
+										<label>Email</label>
+										<input class="form-control" id="runnerEmail" name="runnerEmail" type="email">
+									</div>
+
+									<div class="form-group col-sm-4">
+										<label>Phone</label>
+										<input class="form-control" id="runnerPhone" name="runnerPhone" type="text">
+									</div>
+								</div>
+
+								
+
+								<div class="row">
+
+									
+									<div class="form-group col-sm-12">
+										<label>Address</label>
+										<textarea class="form-control" id="runnerAddress" name="runnerAddress" type="email"></textarea>
+									</div>
+
+									
+								</div>
+						        <div><h4>Business Information :</h4></div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label>Business Name</label>
+										<input class="form-control" id="runnerBusinessName" name="runnerBusinessName" type="text">
+									</div>
+
+									<div class="form-group col-sm-4">
+										<label>Business Phone</label>
+										<input class="form-control" id="runnerBusinessContact" name="runnerBusinessContact" type="text">
+									</div>
+
+									<div class="form-group col-sm-4">
+										<label>Business Email</label>
+										<input class="form-control" id="runnerBusinessEmail" name="runnerBusinessEmail" type="email">
+									</div>
+
+									
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label>Business Logo</label>
+										<input class="form-control" name="image" id="image" type="file">
+									</div>
+
+									<div class="form-group col-sm-6">
+										<label>Select Category</label>
+										<select class="form-control"  name="runnerBusinessCategory" id="runnerBusinessCategory">
+														
+											@foreach($category as $cats)
+												  <option value="{{$cats->categoryId}}">{{$cats->categoryName}}</option>
+											  @endforeach
+										  </select>
+										
+									</div>
+								</div>
+								
+								
+								<div class="row">
+									<div class="form-group col-sm-12">
+										<label>Business Address</label>
+										<textarea class="form-control" id="runnerBusinessAddress" name="runnerBusinessAddress" type="text"></textarea>
+									</div>
+								</div>
+
+							
+
+								<div class="modal-footer">
+									<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+									<input type="submit" class="btn btn-primary" value="Add Runner">
+								</div>
+
+
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+
 	</div>
+
 
 	<!-- jQuery -->
 	<script src="assets/js/jquery-3.5.0.min.js"></script>

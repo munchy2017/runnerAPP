@@ -22,7 +22,7 @@ class CategoriesController extends Controller
         $timestamp = time();
 
         $category_id=(string)$timestamp;
-        $category = $request->get('category');
+        $category_name = $request->get('category');
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -34,7 +34,7 @@ class CategoriesController extends Controller
 
 
 
-        $values = array('category_name' => $category, 'category_id'=> $category_id, 'category_image'=>$imageName);
+        $values = array('categoryName' => $category_name, 'categoryId'=> $category_id, 'category_image'=>$imageName);
         //dd($values);
         DB::table('categories')->insert($values);
         return redirect('categories')

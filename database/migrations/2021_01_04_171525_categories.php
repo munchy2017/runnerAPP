@@ -19,6 +19,9 @@ class Categories extends Migration
             $table->string('categoryId');
            
             $table->string('categoryName');
+            $table->string('category_image');
+            
+
            
         });
     }
